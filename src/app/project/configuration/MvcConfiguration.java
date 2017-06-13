@@ -17,6 +17,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+import org.springframework.web.servlet.view.ResourceBundleViewResolver;
 
 import app.project.model.Employee;
 import app.project.viewResolver.ExcelViewResolver;
@@ -42,6 +43,13 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 		configurer.ignoreAcceptHeader(true).defaultContentType(MediaType.TEXT_HTML);
 	}
 
+	@Bean
+	public ResourceBundleViewResolver resourceBundleViewResolver() {
+		ResourceBundleViewResolver resolver = new ResourceBundleViewResolver();
+		resolver.setBasename("views");
+		resolver.setOrder(1);
+		return resolver;
+	}
 	/*
 	 * Configure ContentNegotiatingViewResolver
 	 */
